@@ -11,7 +11,38 @@
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
-    #import <CoreData/CoreData.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "XWAppDelegate.h"
+#import "XWCenterPlayer.h"
+
+#import "AFNetworking.h"
+#import "UIKit+AFNetworking.h"
+
+#import "UIImageView+WebCache.h"
+
 #endif
+
+#define kDownloadPath [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) lastObject]
+
+#define KWIDTH  [UIScreen mainScreen].bounds.size.width
+#define KHEIGHT [UIScreen mainScreen].bounds.size.height
+#define appDEL ((XWAppDelegate *)[UIApplication sharedApplication].delegate)
+
+#define User_Def [NSUserDefaults standardUserDefaults]
+#define UserDef_Obj(KEY) [[NSUserDefaults standardUserDefaults]objectForKey:KEY]
+//最新
+#define rec_ListURL @"http://songtaste.com/api/android/rec_list.php?p=1&n=20"
+//热门
+#define hot_ListURL @"http://songtaste.com/api/android/hot_song.php?p=1&n=20"
+//专辑
+#define albumsListURL @"http://www.songtaste.com/api/android/hot_albums.php?"
+//标签
+#define tagListURL @"http://www.songtaste.com/api/android/tag_list.php?"
+
+
+#define itemFomatURL @"http://www.songtaste.com/api/android/songurl.php?songid=%@&version=ST0.2.0.05_A1.6"
+
+#define albumDetailFomatURL @"http://songtaste.com/api/android/album_song.php?aid=%@&p=1&n=20&code=utf8"
+#define tagDetailFomatURL @"http://www.songtaste.com/api/android/tag.php?key=%@&t=%@&p=1&n=20&code=utf8"

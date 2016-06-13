@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XWPlayListVC.h"
+#import "XWSavedListVC.h"
+
+typedef void(^palyStateSwitchHandler)(BOOL isPlaying);
 
 @interface XWAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -18,5 +22,11 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+@property (strong, nonatomic)XWPlayListVC  * list;
+@property (strong, nonatomic)XWSavedListVC * saved;
+
+@property(nonatomic, strong)UIView * customTabBar;
+@property(nonatomic, strong)palyStateSwitchHandler playerSwitchHander;
 
 @end
